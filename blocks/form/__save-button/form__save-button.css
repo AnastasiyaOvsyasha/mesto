@@ -1,0 +1,42 @@
+.form__save-button {
+  width: 358px;
+  height: 50px;
+  padding: 14px 0 18px 0;
+  margin: 18px 36px 30px 36px;
+  background: #000;
+  border: 2px solid #000;
+  border-radius: 2px;
+  font-style: normal;
+  font-weight: normal;
+  transition: border .4s, background .4s, color .4s, opacity .4s ease-in-out;
+  pointer-events: all;
+  font-size: 18px;
+  line-height: 1.2;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.form__save-button:hover {
+  opacity: .8;
+}
+
+.form___save-button:focus {
+  opacity: .8;
+}
+
+@media screen and (max-width: 767px) {
+  .form__save-button {
+    width: 238px;
+    margin: 15px 22px 25px 22px;
+  }
+}
+
+@media screen and (max-height: 450px) {
+  .form__save-button {
+    height: 40px;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}

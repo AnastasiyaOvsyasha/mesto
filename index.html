@@ -1,82 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <meta name="description" content="Интересные места в России">
- <meta name="author" content="Анастасия Федотова">
- <link rel="stylesheet" href="./pages/index.css">
- <title>Мesto</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Интересные места в России">
+  <meta name="author" content="Анастасия Федотова">
+  <link href="./pages/index.css" rel="stylesheet">
+  <title>Мesto</title>
 </head>
 
 <body class="page">
- <header class="header page__header">
-  <img class="header__logo" src="./images/logo.svg" alt="логотип сайта Mesto Russia">
- </header>
- <main class="content page__main">
-  <section class="profile">
-   <div class="profile__container-info">
-    <div class="profile__container-avatar">
-     <img class="profile__avatar" src="./images/Russo.jpg" alt="Жак-Ив Кусто в красной шапке">
-     <button class="profile__avatar-edit-button" type="button"></button>
-     <p class="profile__researcher"></p>
+  <header class="header">
+    <img class="header__logo" src="./images/logo.svg" alt="логотип сайта Mesto Russia">
+  </header>
+  <main class=".container">
+    <section class="profile">
+      <div class="profile__container-info">
+        <div class="profile__container-avatar">
+          <img class="profile__avatar" src="./images/Russo.jpg" alt="Жак-Ив Кусто в красной шапке">
+        </div>
+        <div class="profile__common-info">
+          <div class="profile__info">
+            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <p class="profile__researcher">Исследователь океана</p>
+          </div>
+          <button class="profile__edit-button" type="button"></button>
+        </div>
+      </div>
+      <button class="profile__add-button"></button>
+    </section>
+    <section class="photos">
+      <ul class="photos__list">
+        <li class="photos__card">
+          <figure class="photos__figure">
+            <img class="photos__image" src="./images/Карачаевск.jpg" alt="Храм на вершине горы">
+            <figcaption class="photos__title">Карачаевск</figcaption>
+          </figure>
+          <div class="photos__like-box">
+            <button class="photos__like-button"></button>
+          </div>
+        </li>
+        <li class="photos__card">
+          <figure class="photos__figure">
+            <img class="photos__image" src="./images/Гора Эльбрус.jpg" alt="Вид на гору Эльбрус">
+            <figcaption class="photos__title">Гора Эльбрус</figcaption>
+          </figure>
+          <div class="photos__like-box">
+            <button class="photos__like-button"></button>
+          </div>
+        </li>
+        <li class="photos__card">
+          <figure class="photos__figure">
+            <img class="photos__image" src="./images/Домбаи.jpg" alt="Горнолыжный склон Домбай">
+            <figcaption class="photos__title">Домбаи</figcaption>
+          </figure>
+          <div class="photos__like-box">
+            <button class="photos__like-button"></button>
+          </div>
+        </li>
+        <li class="photos__card">
+          <figure class="photos__figure">
+            <img class="photos__image" src="./images/Гора Эльбрус.jpg" alt="Вид на гору Эльбрус">
+            <figcaption class="photos__title">Гора Эльбрус</figcaption>
+          </figure>
+          <div class="photos__like-box">
+            <button class="photos__like-button"></button>
+          </div>
+        </li>
+        <li class="photos__card">
+          <figure class="photos__figure">
+            <img class="photos__image" src="./images/Домбаи.jpg" alt="Горнолыжный склон Домбай">
+            <figcaption class="photos__title">Домбаи</figcaption>
+          </figure>
+          <div class="photos__like-box">
+            <button class="photos__like-button"></button>
+          </div>
+        </li>
+        <li class="photos__card">
+          <figure class="photos__figure">
+            <img class="photos__image" src="./images/Карачаевск.jpg" alt="Храм на вершине горы">
+            <figcaption class="photos__title">Карачаево-Черкессия</figcaption>
+          </figure>
+          <div class="photos__like-box">
+            <button class="photos__like-button"></button>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </main>
+  <footer class="footer">
+    <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
+  </footer>
+  <div class="popup">
+    <div class="popup__container">
+      <form class="form edit-form">
+      <h2 class="form__title">Редактировать профиль</h2>
+      <fieldset class="form__fieldset">
+        <input class="form__input form__input-name" type="text" name="name" id="profile-name" placeholder="Имя Фамилия">
+        <input class="form__input form__input-about" type="text" name="about" id="profile-profession" placeholder="Профессия">
+        <button class="form__save-button" type="submit value="Сохранить">Сохранить</button>
+      </fieldset>
+      <button class="popup__close-icon" type="reset"></button>
+    </form>
     </div>
-    </div>
-    <button class="profile__add-button" type="button"></button>
-   </div>
-  </section>
-  <section class="photos">
-   <ul class="photo__list">
-    <li class="photos__card">
-     <img class="photos-image" src="./images/Карачаевск.jpg" alt="Храм на вершине горы">
-     <div class="photos__like-box">
-      <h2 class="photo__title">Карачаевск</h2>
-      <button class="photos__like-button"></button>
-     </div>
-    </li>
-    <li class="photos__card">
-     <img class="photos-image" src="./images/гора Эльбрус.jpg" alt="Вид на гору Эльбрус">
-     <div class="photos__like-box">
-      <h2 class="photo__title">Гора Эльбрус</h2>
-      <button class="photos__like-button"></button>
-     </div>
-    </li>
-    <li class="photos__card">
-     <img class="photos-image" src="./images/Домбаи.jpg" alt="Заснежанная гора горнолыжного склона Домбай">
-     <div class="photos__like-box">
-      <h2 class="photo__title">Домбаи</h2>
-      <button class="photos__like-button"></button>
-     </div>
-    </li>
-    <li class="photos__card">
-     <img class="photos-image" src="./images/гора Эльбрус.jpg" alt="Вид на гору Эльбрус">
-     <div class="photos__like-box">
-      <h2 class="photo__title">Гора Эльбрус</h2>
-      <button class="photos__like-button"></button>
-     </div>
-    </li>
-    <li class="photos__card">
-     <img class="photos-image" src="./images/Домбаи.jpg" alt="Заснежанная гора горнолыжного склона Домбай">
-     <div class="photos__like-box">
-      <h2 class="photo__title">Домбаи</h2>
-      <button class="photos__like-button"></button>
-     </div>
-    </li>
-    <li class="photos__card">
-     <img class="photos-image" src="./images/Карачаевск.jpg" alt="Храм на вершине горы">
-     <div class="photos__like-box">
-      <h2 class="photo__title">Карачаево-Черкессия</h2>
-      <button class="photos__like-button"></button>
-     </div>
-    </li>
-   </ul>
-  </section>
- </main>
- <footer class="footer">
-  <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
- </footer>
- <script src="./script/index.js"></script>
-</body>
+  </div>
+  <script src="./script/index.js"></script>
+  </body>
 
-</html>
+  </html>

@@ -1,0 +1,19 @@
+.profile__researcher {
+  margin: 0;
+  font-family: 'Inter', Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 1.21;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #fff;
+}
+
+@media screen and (max-width: 569px) {
+  .profile__researcher {
+    font-size: 14px;
+    text-align: center;
+  }
+}
