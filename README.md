@@ -3,7 +3,7 @@
 ### Описание проекта
 Проект включает в себя создание одностраничного сайта путешественника, с небольшим интерактивным интерфейсом и автобиографией.
 
-[Проетная работа "Mesto" на  GitHub Pages](https://anastasiyaovsyasha.github.io/russian-travel/)
+[Проетная работа "Mesto" на  GitHub Pages](https://anastasiyaovsyasha.github.io/mesto/)
 
 ### Технологии проекта:
 1. Git
