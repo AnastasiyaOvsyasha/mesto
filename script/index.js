@@ -14,8 +14,10 @@ let FormInputAbout = document.querySelector('.form__input-about');
 
 function togglePopup() {
   Popup.classList.toggle('popup_opened');
-  FormInputName.value = ProfileName.textContent;
-  FormInputAbout.value = ProfileResearcher.textContent;
+  if (Popup.classList.contains('popup_opened')) {
+    FormInputName.value = ProfileName.textContent;
+    FormInputAbout.value = ProfileResearcher.textContent;
+  }
 }
 
 ProfileEditButton.addEventListener('click', togglePopup);
