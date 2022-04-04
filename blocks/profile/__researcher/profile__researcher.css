@@ -1,8 +1,11 @@
 .profile__researcher {
+  padding-top: 7px;
   margin: 0;
+  padding: 0;
+  width: 100%;
   font-family: 'Inter', Arial, sans-serif;
   font-style: normal;
-  font-weight: normal;
+  font-weight: 400px;
   font-size: 18px;
   line-height: 1.21;
   text-overflow: ellipsis;
@@ -11,8 +14,10 @@
   color: #fff;
 }
 
-@media screen and (max-width: 569px) {
+@media screen and (max-width: 768px) {
   .profile__researcher {
+    max-width: 282px;
+    padding-top: 10px;
     font-size: 14px;
     text-align: center;
   }

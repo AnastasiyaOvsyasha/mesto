@@ -5,9 +5,10 @@
   position: absolute;
   top: -40px;
   right: -40px;
-  background-image: url(../../../images/close.svg);
+  background-image: url(../../../images/Close_Icon_btn.svg);
   background-position: center;
-  background-color: black;
+  background-color: transparent;
+  background-repeat: no-repeat;
   border: none;
   border-radius: 10px;
   cursor: pointer;

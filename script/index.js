@@ -1,33 +1,33 @@
 /* Profile*/
-let ProfileEditButton = document.querySelector('.profile__edit-button');
-let ProfileName = document.querySelector('.profile__name');
-let ProfileResearcher = document.querySelector('.profile__researcher');
+let profileEditButton = document.querySelector('.profile__edit-button');
+let profileName = document.querySelector('.profile__name');
+let profileResearcher = document.querySelector('.profile__researcher');
 
 /* Popup*/
-let Popup = document.querySelector('.popup');
-let PopupClossIcon = document.querySelector('.popup__close-icon');
+let popup = document.querySelector('.popup');
+let popupCloseIcon = document.querySelector('.popup__close-icon');
 
 /* Form*/
-let FormSaveBtn = document.querySelector('.form__save-button');
-let FormInputName = document.querySelector('.form__input-name');
-let FormInputAbout = document.querySelector('.form__input-about');
+let form = document.querySelector('.form');
+let formTypeText = document.querySelector('.form_type_text');
+let formTypeAbout = document.querySelector('.form_type_about');
 
 function togglePopup() {
-  Popup.classList.toggle('popup_opened');
-  if (Popup.classList.contains('popup_opened')) {
-    FormInputName.value = ProfileName.textContent;
-    FormInputAbout.value = ProfileResearcher.textContent;
+  popup.classList.toggle('popup_opened');
+  if (popup.classList.contains('popup_opened')) {
+    formTypeText.value = profileName.textContent;
+    formTypeAbout.value = profileResearcher.textContent;
   }
 }
 
-ProfileEditButton.addEventListener('click', togglePopup);
-PopupClossIcon.addEventListener('click', togglePopup);
-
+profileEditButton.addEventListener('click', togglePopup);
+popupCloseIcon.addEventListener('click', togglePopup);
 function formSubmitHandler(evt) {
+  // Инструкция ниже отменяет отправку данных
   evt.preventDefault();
-  ProfileName.textContent = FormInputName.value;
-  ProfileResearcher.textContent = FormInputAbout.value;
+  profileName.textContent = formTypeText.value;
+  profileResearcher.textContent = formTypeAbout.value;
   togglePopup();
 }
 
-FormSaveBtn.addEventListener('click', formSubmitHandler);
+form.addEventListener('submit', formSubmitHandler);

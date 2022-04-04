@@ -1,12 +1,12 @@
 .photos {
-  max-width: 882px;
-  margin: 0 auto;
-  padding: 26px 0 30px 0;
-  background-color: #000;
+  max-width: 880px;
+  margin: auto;
+  padding: 0 20px;
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width:768px) {
   .photos {
-    padding: 0px 19px 0px 19px;
+    max-width: 580px;
+    margin: 0 auto;
   }
 }

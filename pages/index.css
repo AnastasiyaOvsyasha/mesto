@@ -8,22 +8,18 @@
 
 /*profile*/
 @import url(../blocks/profile/profile.css);
-@import url(../blocks/profile/__common-info/profile__common-info.css);
 @import url(../blocks/profile/__add-button/profile__add-button.css);
 @import url(../blocks/profile/__edit-button/profile__edit-button.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
-@import url(../blocks/profile/__container-avatar/profile__container-avatar.css);
-@import url(../blocks/profile/__container-info/profile__container-info.css);
 @import url(../blocks/profile/__name/profile__name.css);
 @import url(../blocks/profile/__researcher/profile__researcher.css);
 @import url(../blocks/profile/__info/profile__info.css);
 
 /*photos*/
 @import url(../blocks/photos/photos.css);
-@import url(../blocks/photos/__figure/photos__figure.css);
+@import url(../blocks/photos/__box-info/photos__box-info.css);
 @import url(../blocks/photos/__card/photos__card.css);
 @import url(../blocks/photos/__image/photos__image.css);
-@import url(../blocks/photos/__like-box/photos__like-box.css);
 @import url(../blocks/photos/__like-button/photos__like-button.css);
 @import url(../blocks/photos/__list/photos__list.css);
 @import url(../blocks/photos/__title/photos__title.css);
