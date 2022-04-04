@@ -9,14 +9,14 @@ let popupCloseIcon = document.querySelector('.popup__close-icon');
 
 /* Form*/
 let form = document.querySelector('.form');
-let formTypeText = document.querySelector('.form_type-text');
-let formTypeAbout = document.querySelector('.form_type-about');
+let formInputTypeText = document.querySelector('.form__input_type_text');
+let formInputTypeAbout = document.querySelector('.form__input_type_about');
 
 function togglePopup() {
   popup.classList.toggle('popup_opened');
   if (popup.classList.contains('popup_opened')) {
-    formTypeText.value = profileName.textContent;
-    formTypeAbout.value = profileResearcher.textContent;
+    formInputTypeText.value = profileName.textContent;
+    formInputTypeAbout.value = profileResearcher.textContent;
   }
 }
 
@@ -25,8 +25,8 @@ popupCloseIcon.addEventListener('click', togglePopup);
 function formSubmitHandler(evt) {
   // Инструкция ниже отменяет отправку данных
   evt.preventDefault();
-  profileName.textContent = formTypeText.value;
-  profileResearcher.textContent = formTypeAbout.value;
+  profileName.textContent = formInputTypeText.value;
+  profileResearcher.textContent = formInputTypeAbout.value;
   togglePopup();
 }
 
