@@ -9,8 +9,8 @@ let popupCloseIcon = document.querySelector('.popup__close-icon');
 
 /* Form*/
 let form = document.querySelector('.form');
-let formTypeText = document.querySelector('.form_type_text');
-let formTypeAbout = document.querySelector('.form_type_about');
+let formTypeText = document.querySelector('.form_type-text');
+let formTypeAbout = document.querySelector('.form_type-about');
 
 function togglePopup() {
   popup.classList.toggle('popup_opened');
