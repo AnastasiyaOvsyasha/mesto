@@ -16,7 +16,7 @@
   border-bottom: 1px rgba(0, 0, 0, 0.2) solid;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 570px) {
   .form__input {
     width: 238px;
   }
