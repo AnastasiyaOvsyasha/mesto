@@ -6,7 +6,6 @@
   font-weight: 900;
   font-size: 24px;
   line-height: 1.21;
-  max-width: 330px;
   color: black;
 }
 
@@ -14,6 +13,6 @@
   .form__title {
     font-size: 18px;
     line-height: 1.22;
-    margin: 25px 36px 75px 22px;
+    margin: 25px 35px 75px 22px;
   }
 }
