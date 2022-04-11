@@ -16,17 +16,18 @@
   </header>
   <main class="container">
     <section class="profile">
-        <img class="profile__avatar" src="./images/Russo.jpg" alt="Жак-Ив Кусто в красной шапке">
-          <div class="profile__info">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <button class="profile__edit-button" aria-label="редактировать профиль" type="button"></button>
-          <p class="profile__researcher">Исследователь океана</p>
-        </div>
+      <img class="profile__avatar" src="./images/Russo.jpg" alt="Жак-Ив Кусто в красной шапке">
+      <div class="profile__info">
+        <h1 class="profile__name">Жак-Ив Кусто</h1>
+        <button class="profile__edit-button" aria-label="редактировать профиль" type="button"></button>
+        <p class="profile__researcher">Исследователь океана</p>
+      </div>
       <button class="profile__add-button" aria-label="добавить фотографии" type="button"></button>
     </section>
     <section class="photos">
       <ul class="photos__list">
         <li class="photos__card">
+          <button class="photos__delete-button" aria-label="удалить фотографию" type="button"></button>
           <img class="photos__image" src="./images/Карачаевск.jpg" alt="Храм на вершине горы">
           <div class="photos__box-info">
             <h2 class="photos__title">Карачаевск</h2>
@@ -34,6 +35,7 @@
           </div>
         </li>
         <li class="photos__card">
+          <button class="photos__delete-button" aria-label="удалить фотографию" type="button"></button>
           <img class="photos__image" src="./images/Гора%20Эльбрус.jpg" alt="Вид на гору Эльбрус">
           <div class="photos__box-info">
             <h2 class="photos__title">Гора Эльбрус</h2>
@@ -41,6 +43,7 @@
           </div>
         </li>
         <li class="photos__card">
+          <button class="photos__delete-button" aria-label="удалить фотографию" type="button"></button>
           <img class="photos__image" src="./images/Домбаи.jpg" alt="Горнолыжный склон Домбай">
           <div class="photos__box-info">
             <h2 class="photos__title">Домбаи</h2>
@@ -48,6 +51,7 @@
           </div>
         </li>
         <li class="photos__card">
+          <button class="photos__delete-button" aria-label="удалить фотографию" type="button"></button>
           <img class="photos__image" src="./images/Гора%20Эльбрус.jpg" alt="Вид на гору Эльбрус">
           <div class="photos__box-info">
             <h2 class="photos__title">Гора Эльбрус</h2>
@@ -55,6 +59,7 @@
           </div>
         </li>
         <li class="photos__card">
+          <button class="photos__delete-button" aria-label="удалить фотографию" type="button"></button>
           <img class="photos__image" src="./images/Домбаи.jpg" alt="Горнолыжный склон Домбай">
           <div class="photos__box-info">
             <h2 class="photos__title">Домбаи</h2>
@@ -62,6 +67,7 @@
           </div>
         </li>
         <li class="photos__card">
+          <button class="photos__delete-button" aria-label="удалить фотографию" type="button"></button>
           <img class="photos__image" src="./images/Карачаевск.jpg" alt="Храм на вершине горы">
           <div class="photos__box-info">
             <h2 class="photos__title">Карачаево-Черкессия</h2>
@@ -74,19 +80,55 @@
   <footer class="footer">
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
-  <div class="popup">
+  <div class="popup popup-edit">
     <div class="popup__container">
-      <form class="form" name="form" method="post">
+      <form class="form edit-form" name="form" method="post">
         <h3 class="form__title">Редактировать профиль</h3>
         <fieldset class="form__fieldset">
           <input class="form__input form__input_type_text" type="text" name="name" id="profile-name" placeholder="Имя">
-          <input class="form__input form__input_type_about" type="text" name="about" id="profile-about" placeholder="О себе">
+          <input class="form__input form__input_type_about" type="text" name="about" id="profile-about"
+            placeholder="О себе">
           <button type="submit" value="Сохранить" class="form__save-button">Сохранить</button>
         </fieldset>
-        <button class="popup__close-icon" aria-label="закрыть форму профиля" type="reset"></button>
+        <button class="popup__close-icon popup-edit__close-icon" aria-label="закрыть форму профиля"
+          type="reset"></button>
       </form>
     </div>
   </div>
+  <div class="popup popup-add">
+    <div class="popup__container">
+      <form class="form add-form" name="new" method="post">
+        <h3 class="form__title">Новое место</h3>
+        <fieldset class="form__fieldset">
+          <input class="form__input form__input_type_title" type="text" name="name" id="photo-name"
+            placeholder="Название">
+          <input class="form__input form__input_type_link" type="url" name="link" id="photo-link"
+            placeholder="Ссылка на картинку">
+          <button type="submit" value="Создать" class="form__save-button">Создать</button>
+        </fieldset>
+        <button class="popup__close-icon popup-add__close-icon" aria-label="закрыть форму профиля"
+          type="reset"></button>
+      </form>
+    </div>
+  </div>
+  <div class="popup popup-photos">
+    <div class="popup__container popup-photos__container">
+      <figure class="photos__wrap popup-photos__wrap">
+        <img class="popup-photos__bigsize-image" src="" alt="">
+        <figcaption class="popup-photos__caption"></figcaption>
+      </figure>
+      <button class="popup__close-icon popup-photos__close-icon" aria-label="заавершить просмотр"></button>
+    </div>
+  </div>
+  <template id="template-photos">
+    <li class="photos__card">
+      <img class="photos__image" src="" alt="">
+      <div class="photos__box-info">
+        <h2 class="photos__title"></h2>
+        <button class="photos__like-button" aria-label="поставить лайк фото" type="button"></button>
+      </div>
+    </li>
+  </template>
   <script src="./script/index.js"></script>
 </body>
 

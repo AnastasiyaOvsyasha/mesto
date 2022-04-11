@@ -1,33 +1,68 @@
-/* Profile*/
-let profileEditButton = document.querySelector('.profile__edit-button');
-let profileName = document.querySelector('.profile__name');
-let profileResearcher = document.querySelector('.profile__researcher');
+//Добавление фотографий
 
-/* Popup*/
-let popup = document.querySelector('.popup');
-let popupCloseIcon = document.querySelector('.popup__close-icon');
+//Profile
+const profile = document.querySelector('.profile');
+const profileEditButton = profile.querySelector('.profile__edit-button');
+const profileName = profile.querySelector('.profile__name');
+const profileResearcher = profile.querySelector('.profile__researcher');
 
-/* Form*/
-let form = document.querySelector('.form');
-let formInputTypeText = document.querySelector('.form__input_type_text');
-let formInputTypeAbout = document.querySelector('.form__input_type_about');
+//Photos
+const photos = document.querySelector('.photos');
+const photosList = photos.querySelector('.photos__list');
+const photosAddButton = profile.querySelector('.profile__add-button');
+const photosElement = document.querySelector('#template-photos').content;
 
-function togglePopup() {
-  popup.classList.toggle('popup_opened');
-  if (popup.classList.contains('popup_opened')) {
-    formInputTypeText.value = profileName.textContent;
-    formInputTypeAbout.value = profileResearcher.textContent;
+//Popup
+const popup = document.querySelector('.popup');
+
+   //popup-edit
+   const popupEdit = document.querySelector('.popup-edit');
+   const popupEditCloseIcon = popupEdit.querySelector('.popup-edit__close-icon');
+
+   //popup-add
+   const popupAdd = document.querySelector('.popup-add');
+   const popupAddCloseIcon = popupAdd.querySelector('.popup-add__close-icon');
+
+   //editForm
+   const editForm = document.querySelector('.edit-form');
+   const inputProfileName = editForm.querySelector('#profile-name');
+   const inputProfileAbout = editForm.querySelector('#profile-about');
+
+   //addForm
+   const addForm = document.querySelector('.add-form');
+   const inputPhotoName = addForm.querySelector('#photo-name');
+   const inputPhotoLink = addForm.querySelector('#photo-link');
+
+//Popup-photos
+const popupPhotos = document.querySelector('.popup-photos');
+const popupPhotosBigSizeImage = popupPhotos.querySelector('.popup-photos__bigsize-image');
+const popupPhotosCaption = popupPhotos.querySelector('.popup-photos__caption');
+const popupPhotosCloseIcon = popupPhotos.querySelector('.popup-photos__close-icon');
+
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
-}
+];
 
-profileEditButton.addEventListener('click', togglePopup);
-popupCloseIcon.addEventListener('click', togglePopup);
-function formSubmitHandler(evt) {
-  // Инструкция ниже отменяет отправку данных
-  evt.preventDefault();
-  profileName.textContent = formInputTypeText.value;
-  profileResearcher.textContent = formInputTypeAbout.value;
-  togglePopup();
-}
-
-form.addEventListener('submit', formSubmitHandler);
