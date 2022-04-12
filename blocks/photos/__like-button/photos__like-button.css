@@ -9,7 +9,7 @@
   background-repeat: no-repeat;
   background-color: #fff;
   background-image: url(../../../images/like-inactive.svg);
-  transition: opacity .4s ease-in-out;
+  transition: opacity .2s ease;
 }
 
 .photos__like-button:hover {

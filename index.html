@@ -26,7 +26,7 @@
     </section>
     <section class="photos">
       <ul class="photos__list">
-        <li class="photos__card">
+        <!--- <li class="photos__card">
           <button class="photos__delete-button" aria-label="удалить фотографию" type="button"></button>
           <img class="photos__image" src="./images/Карачаевск.jpg" alt="Храм на вершине горы">
           <div class="photos__box-info">
@@ -73,7 +73,7 @@
             <h2 class="photos__title">Карачаево-Черкессия</h2>
             <button class="photos__like-button" aria-label="поставить лайк фото" type="button"></button>
           </div>
-        </li>
+        </li> --->
       </ul>
     </section>
   </main>
@@ -98,7 +98,7 @@
   <div class="popup popup-add">
     <div class="popup__container">
       <form class="form add-form" name="new" method="post">
-        <h3 class="form__title">Новое место</h3>
+        <h3 class="form__title form__title_add_form">Новое место</h3>
         <fieldset class="form__fieldset">
           <input class="form__input form__input_type_title" type="text" name="name" id="photo-name"
             placeholder="Название">
@@ -112,9 +112,9 @@
     </div>
   </div>
   <div class="popup popup-photos">
-    <div class="popup__container popup-photos__container">
+    <div class="popup-photos__container">
       <figure class="photos__wrap popup-photos__wrap">
-        <img class="popup-photos__bigsize-image" src="" alt="">
+        <img class="popup-photos__bigsize-image" src=" " alt=" ">
         <figcaption class="popup-photos__caption"></figcaption>
       </figure>
       <button class="popup__close-icon popup-photos__close-icon" aria-label="заавершить просмотр"></button>
@@ -122,7 +122,8 @@
   </div>
   <template id="template-photos">
     <li class="photos__card">
-      <img class="photos__image" src="" alt="">
+      <button class="photos__delete-button" aria-label="удалить фотографию" type="button"></button>
+      <img class="photos__image" src=" " alt=" ">
       <div class="photos__box-info">
         <h2 class="photos__title"></h2>
         <button class="photos__like-button" aria-label="поставить лайк фото" type="button"></button>
