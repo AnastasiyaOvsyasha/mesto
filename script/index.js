@@ -82,9 +82,9 @@ function resetInputValue(...inputs) {
 
 function addPhotosCard(evt) {
   evt.preventDefault();
-  addTemplatePhotos(inputPhotoName.value, inputPhotoLink.value, 'prepend');
-  resetInputValue(inputPhotoName, inputPhotoLink);
-  closePopupAdd();
+  photosList.prepend(createCard(inputPhotoName.value, inputPhotoLink.value));
+  addForm.reset();
+  closePopupAdd(popupAddCloseIcon);
 }
 
 function openPopupEdit() {
