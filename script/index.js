@@ -77,13 +77,13 @@ function initializeProfileInfo() {
 }
 
 function resetInputValue(...inputs) {
-  inputs.reset();
+  inputs.forEach((elem) => (elem.value = ""));
 }
 
 function addPhotosCard(evt) {
   evt.preventDefault();
-  photosList.prepend(createCard(inputPhotoName.value, inputPhotoLink.value));
-  addForm.reset();
+  addTemplatePhotos(inputPhotoName.value, inputPhotoLink.value, 'prepend');
+  resetInputValue(inputPhotoName, inputPhotoLink);
   closePopupAdd();
 }
 
