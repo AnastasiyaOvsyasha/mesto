@@ -84,7 +84,7 @@ function addPhotosCard(evt) {
   evt.preventDefault();
   photosList.prepend(createCard(inputPhotoName.value, inputPhotoLink.value));
   addForm.reset();
-  closePopupAdd(popupAddCloseIcon);
+  closePopupAdd(popupEditCloseIcon);
 }
 
 function openPopupEdit() {
