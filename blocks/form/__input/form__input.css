@@ -10,7 +10,8 @@
   line-height: 1.21;
   color: #000;
   box-sizing: border-box;
-  border: 0;
+  border: none;
+  transition: padding .4s ease-in-out;
   border-bottom: 1px rgba(0, 0, 0, 0.2) solid;
 }
 
@@ -18,4 +19,8 @@
   .form__input {
     width: 238px;
   }
+}
+
+.form__input::placeholder {
+  color: #c4c4c4;
 }
