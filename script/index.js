@@ -5,10 +5,11 @@ const profileResearcher = profile.querySelector(".profile__researcher");
 
 const photos = document.querySelector(".photos");
 const photosList = photos.querySelector(".photos__list");
+const photosImage = document.querySelector(".photos__image");
 const photosAddButton = profile.querySelector(".profile__add-button");
 
-const popupLi = document.querySelectorAll(".popup");
-const popupCloseIconLi = document.querySelectorAll(".popup__close-icon");
+const popupList = document.querySelectorAll(".popup");
+const popupCloseIconList = document.querySelectorAll(".popup__close-icon");
 
 const popupEdit = document.querySelector(".popup-edit");
 const popupEditCloseIcon = popupEdit.querySelector(".popup-edit__close-icon");
@@ -16,13 +17,14 @@ const popupEditCloseIcon = popupEdit.querySelector(".popup-edit__close-icon");
 const popupAdd = document.querySelector(".popup-add");
 const popupAddCloseIcon = popupAdd.querySelector(".popup-add__close-icon");
 
-const editForm = document.querySelector(".edit-form");
-const inputProfileName = editForm.querySelector("#profile-name");
-const inputProfileAbout = editForm.querySelector("#profile-about");
+const formEdit = document.querySelector(".edit-form");
+const inputProfileName = formEdit.querySelector("#profile-name");
+const inputProfileAbout = formEdit.querySelector("#profile-about");
 
-const addForm = document.querySelector(".add-form");
-const inputPhotoName = addForm.querySelector("#photo-name");
-const inputPhotoLink = addForm.querySelector("#photo-link");
+const formAdd = document.querySelector(".add-form");
+const formSaveButton = popupAdd.querySelector(".form__save-button");
+const inputPhotoName = formAdd.querySelector("#photo-name");
+const inputPhotoLink = formAdd.querySelector("#photo-link");
 
 const popupPhotos = document.querySelector(".popup-photos");
 const popupPhotosBigSizeImage = popupPhotos.querySelector(
@@ -39,9 +41,10 @@ function createCard(name, url) {
     .querySelector(".photos__card")
     .cloneNode(true);
 
-  photosCard.querySelector(".photos__image").src = url;
-  photosCard.querySelector(".photos__image").alt = `фотография ${name}`;
+  const photosImage = photosCard.querySelector(".photos__image");
   photosCard.querySelector(".photos__title").textContent = name;
+  photosImage.src = url;
+  photosImage.alt = name;
 
   photosCard
     .querySelector(".photos__delete-button")
@@ -80,7 +83,7 @@ function initializePhotos(initialCards) {
 }
 
 function eventHandler(evt) {
-  if (evt.target !== evt.target.parentElement.parentElement) {
+  if (evt.target === evt.currentTarget) {
     closePopup(evt.target);
   }
 }
@@ -97,7 +100,7 @@ function resetInputValue(...inputs) {
 function addPhotosCard(evt) {
   evt.preventDefault();
   photosList.prepend(createCard(inputPhotoName.value, inputPhotoLink.value));
-  addForm.reset();
+  formAdd.reset();
   closePopupAdd(popupAdd);
 }
 
@@ -107,6 +110,8 @@ function openPopupEdit() {
 }
 
 function openPopupAdd() {
+  formSaveButton.setAttribute("disabled", "");
+  formSaveButton.classList.add("form__save-button_inactive");
   openPopup(popupAdd);
 }
 
@@ -123,7 +128,7 @@ function saveProfileForm(evt) {
   evt.preventDefault();
   profileName.textContent = inputProfileName.value;
   profileResearcher.textContent = inputProfileAbout.value;
-  closePopup(evt.target.parentElement.parentElement);
+  closePopup(evt.target.closest(".popup-edit"));
 }
 
 function closePopupPhoto() {
@@ -132,25 +137,21 @@ function closePopupPhoto() {
 
 function escKeyHandler(evt) {
   if (evt.key === "Escape") {
-    if (popupAdd.classList.contains("popup_opened")) {
-      closePopup(popupAdd);
-    } else if (popupEdit.classList.contains("popup_opened")) {
-      closePopup(popupEdit);
-    } else if (popupPhotos.classList.contains("popup_opened")) {
-      closePopup(popupPhotos);
-    }
+    popupList.forEach((popup) => {
+      popup.classList.remove("popup_opened");
+    });
   }
 }
 
-popupLi.forEach((popup) => {
+popupList.forEach((popup) => {
   popup.addEventListener("keydown", escKeyHandler);
 });
 
 //Обработчик событий
 profileEditButton.addEventListener("click", openPopupEdit);
 popupEditCloseIcon.addEventListener("click", closePopupEdit);
-editForm.addEventListener("submit", saveProfileForm);
-popupCloseIconLi.forEach((popupCloseIcon) => {
+formEdit.addEventListener("submit", saveProfileForm);
+popupCloseIconList.forEach((popupCloseIcon) => {
   popupCloseIcon.addEventListener("click", function (evt) {
     closePopup(evt.target.parentElement.parentElement);
   });
@@ -158,6 +159,6 @@ popupCloseIconLi.forEach((popupCloseIcon) => {
 
 photosAddButton.addEventListener("click", openPopupAdd);
 popupAddCloseIcon.addEventListener("click", closePopupAdd);
-addForm.addEventListener("submit", addPhotosCard);
+formAdd.addEventListener("submit", addPhotosCard);
 
 initializePhotos(initialCards);

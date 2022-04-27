@@ -57,9 +57,9 @@
         <fieldset class="form__fieldset">
           <input class="form__input form__input_type_title" type="text" name="photo-name" id="photo-name"
             placeholder="Название" required minlength="2" maxlength="30">
-          <span class="form__input-error" id="photo-name-error"></span>
+          <span class="form__input-error" id="photo-name-error" role="status" aria-live="polite"></span>
           <input class="form__input form__input_type_link" type="url" name="photo-link" id="photo-link"
-            placeholder="Ссылка на картинку" required><span class="form__input-error" id="photo-link-error"></span>
+            placeholder="Ссылка на картинку" required><span class="form__input-error" id="photo-link-error" role="status" aria-live="polite"></span>
           <button type="submit" value="Создать" class="form__save-button">Создать</button>
         </fieldset>
         <button class="popup__close-icon popup-add__close-icon" aria-label="закрыть форму профиля"
@@ -79,7 +79,7 @@
   <template id="template-photos">
     <li class="photos__card">
       <button class="photos__delete-button" aria-label="удалить фотографию" type="button"></button>
-      <img class="photos__image" src=" " alt=" ">
+      <img class="photos__image">
       <div class="photos__box-info">
         <h2 class="photos__title"></h2>
         <button class="photos__like-button" aria-label="поставить лайк фото" type="button"></button>
