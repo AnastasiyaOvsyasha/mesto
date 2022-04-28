@@ -40,10 +40,21 @@ function checkInputValidity(formElement, inputElement) {
   }
 }
 
-function toggleSubmitButtonState(formInputs, formSubmitButton) {
+const disableSubmitButton = function (
+  formSubmitButton,
+  inactiveSaveButtonClass
+) {
+  formSubmitButton.classList.add(inactiveSaveButtonClass);
+  formSubmitButton.setAttribute("disabled", "");
+};
+
+function toggleSubmitButtonState(
+  formInputs,
+  formSubmitButton,
+  inactiveSaveButtonClass
+) {
   if (hasInvalidInput(formInputs)) {
-    formSubmitButton.disabled = true;
-    formSubmitButton.classList.add(validateSetting.inactiveSaveButtonClass);
+    disableSubmitButton(formSubmitButton, inactiveSaveButtonClass);
   } else {
     formSubmitButton.disabled = false;
     formSubmitButton.classList.remove(validateSetting.inactiveSaveButtonClass);

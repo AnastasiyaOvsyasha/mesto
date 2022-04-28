@@ -110,8 +110,7 @@ function openPopupEdit() {
 }
 
 function openPopupAdd() {
-  formSaveButton.setAttribute("disabled", "");
-  formSaveButton.classList.add("form__save-button_inactive");
+  disableSubmitButton(formSaveButton, validateSetting.inactiveSaveButtonClass);
   openPopup(popupAdd);
 }
 
