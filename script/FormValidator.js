@@ -55,7 +55,7 @@ class FormValidator {
     );
   }
 
-  clearFormInputsErrors() {
+  clearFormInputError() {
     this._formInputs.forEach((input) => {
       this._hideInputError(input);
     });

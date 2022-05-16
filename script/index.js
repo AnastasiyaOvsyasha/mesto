@@ -84,8 +84,8 @@ function createCard(initialCardsData) {
 }
 
 function openPopup(popup) {
-  document.addEventListener("keyup", closePopupOnEsc);
-  popup.addEventListener("mouseup", closePopupOnOverlay);
+  document.addEventListener("keydown", closePopupOnEsc);
+  popup.addEventListener("click", closePopupOnOverlay);
   popup.classList.add("popup_opened");
 }
 
