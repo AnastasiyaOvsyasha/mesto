@@ -19,7 +19,7 @@
       <img class="profile__avatar" src="./images/Russo.jpg" alt="Жак-Ив Кусто в красной шапке">
       <div class="profile__info">
         <h1 class="profile__name">Жак-Ив Кусто</h1>
-        <button class="profile__edit-button" aria-label="редактировать профиль" type="button"></button>
+        <button class="profile__edit-button open-form-button" aria-label="редактировать профиль" type="button"></button>
         <p class="profile__researcher">Исследователь океана</p>
       </div>
       <button class="profile__add-button" aria-label="добавить фотографии" type="button"></button>
@@ -37,12 +37,12 @@
       <form class="form edit-form" name="form" method="post" novalidate>
         <h3 class="form__title">Редактировать профиль</h3>
         <fieldset class="form__fieldset">
-          <input class="form__input form__input_type_text" type="text" name="profile-name" id="profile-name"
-            placeholder="Имя" required minlength="2" maxlength="40">
-          <span class="form__input-error" id="profile-name-error"></span>
-          <input class="form__input form__input_type_about" type="text" name="profile-about" id="profile-about"
-            placeholder="О себе" required minlength="2" maxlength="200">
-          <span class="form__input-error" id="profile-about-error"></span>
+          <input class="form__input form__input_type_text" data-input="edit-profile-name-input" id="profile-name"
+            type="text" name="profile-name" placeholder="Имя" required minlength="2" maxlength="40">
+          <span class="form__input-error" data-input="edit-profile-name-input-error" id="profile-name-error"></span>
+          <input class="form__input form__input_type_about" data-input="edit-profile-about-input" id="profile-about"
+            type="text" name="profile-about" placeholder="О себе" required minlength="2" maxlength="200">
+          <span class="form__input-error" data-input="edit-profile-about-input-error" id="profile-about-error"></span>
           <button type="submit" value="Сохранить" class="form__save-button">Сохранить</button>
         </fieldset>
         <button class="popup__close-icon popup-edit__close-icon" aria-label="закрыть форму профиля"
@@ -55,11 +55,13 @@
       <form class="form add-form" name="new" method="post" novalidate>
         <h3 class="form__title form__title_add_form">Новое место</h3>
         <fieldset class="form__fieldset">
-          <input class="form__input form__input_type_title" type="text" name="photo-name" id="photo-name"
-            placeholder="Название" required minlength="2" maxlength="30">
-          <span class="form__input-error" id="photo-name-error" role="status" aria-live="polite"></span>
-          <input class="form__input form__input_type_link" type="url" name="photo-link" id="photo-link"
-            placeholder="Ссылка на картинку" required><span class="form__input-error" id="photo-link-error" role="status" aria-live="polite"></span>
+          <input class="form__input form__input_type_title" data-input="add-photo-name-input" id="photo-name"
+            type="text" name="photo-name" placeholder="Название" required minlength="2" maxlength="30">
+          <span class="form__input-error" data-input="add-photo-name-input-error" id="photo-name-error" role="status"
+            aria-live="polite"></span>
+          <input class="form__input form__input_type_link" data-input="add-photo-link-input" id="photo-link" type="url"
+            name="photo-link" placeholder="Ссылка на картинку" required><span class="form__input-error"
+            data-input="add-photo-link-input-error" id="photo-link-error" role="status" aria-live="polite"></span>
           <button type="submit" value="Создать" class="form__save-button">Создать</button>
         </fieldset>
         <button class="popup__close-icon popup-add__close-icon" aria-label="закрыть форму профиля"
@@ -86,9 +88,7 @@
       </div>
     </li>
   </template>
-  <script src="./script/validate.js"></script>
-  <script src="./script/cards.js"></script>
-  <script src="./script/index.js"></script>
+  <script type="module" src="./script/index.js"></script>
 </body>
 
 </html>
