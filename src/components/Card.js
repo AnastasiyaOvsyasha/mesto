@@ -1,16 +1,9 @@
-import { openPopup } from "./index.js";
-
-const popupPhotos = document.querySelector(".popup-photos");
-const popupPhotosBigSizeImage = document.querySelector(
-  ".popup-photos__bigsize-image"
-);
-const popupPhotosCaption = document.querySelector(".popup-photos__caption");
-
-class Card {
-  constructor(name, link, templateSelector) {
+export default class Card {
+  constructor(name, link, templateSelector, { handleCardClick }) {
     this._name = name;
     this._link = link;
     this._templateSelector = templateSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplateElement() {
@@ -31,16 +24,9 @@ class Card {
   }
 
   _setEventListeners() {
+    this._handleCardClick(this._photosImage, this._name, this._link);
     this._photosDeleteButton.addEventListener("click", () => this._delete());
     this._photosLikeButton.addEventListener("click", (e) => this._like(e));
-    this._photosImage.addEventListener("click", (e) => this._openCardPopup(e));
-  }
-
-  _openCardPopup() {
-    popupPhotosBigSizeImage.src = this._link;
-    popupPhotosBigSizeImage.alt = this._name;
-    popupPhotosCaption.textContent = this._name;
-    openPopup(popupPhotos);
   }
 
   makeCard() {
@@ -62,5 +48,3 @@ class Card {
     return this._cards;
   }
 }
-
-export { Card };

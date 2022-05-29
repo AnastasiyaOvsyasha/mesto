@@ -1,4 +1,4 @@
-class FormValidator {
+export default class FormValidator {
   constructor(validateSetting, form) {
     this._form = form;
     this._submitButtonSelector = validateSetting.submitButtonSelector;
@@ -61,6 +61,4 @@ class FormValidator {
     });
     this._toggleSubmitButtonState();
   }
-}
-
-export { FormValidator };
+};

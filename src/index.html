@@ -6,17 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Интересные места в России">
   <meta name="author" content="Анастасия Федотова">
-  <link href="./pages/index.css" rel="stylesheet">
   <title>Мesto</title>
 </head>
 
 <body class="page">
   <header class="header">
-    <img class="header__logo" src="./images/header__logo.svg" alt="логотип сайта Mesto Russia">
+    <img class="header__logo" src="<%=require('./images/header__logo.svg')%>" alt="логотип сайта Mesto Russia">
   </header>
   <main class="container">
     <section class="profile">
-      <img class="profile__avatar" src="./images/Russo.jpg" alt="Жак-Ив Кусто в красной шапке">
+      <img class="profile__avatar" src="<%=require('./images/Russo.jpg')%>" alt="Жак-Ив Кусто в красной шапке">
       <div class="profile__info">
         <h1 class="profile__name">Жак-Ив Кусто</h1>
         <button class="profile__edit-button" aria-label="редактировать профиль" type="button"></button>
@@ -88,7 +87,6 @@
       </div>
     </li>
   </template>
-  <script type="module" src="./script/index.js"></script>
 </body>
 
 </html>
