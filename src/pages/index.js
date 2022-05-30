@@ -72,6 +72,7 @@ const popupAddFormValidation = new FormValidator(validateSetting, popupAddForm);
 popupAddFormValidation.enableValidation();
 
 const cardTemplateSelector = "#template-photos";
+const popupPhotosSelector = ".popup-photos";
 
 function makeCard({ name, link }, templateSelector) {
   const newCard = new Card(name, link, templateSelector, {
@@ -84,6 +85,8 @@ const userInfo = new UserInfo({
   userNameSelector: profileNameSelector,
   userAboutSelector: profileResearcherSelector,
 });
+
+const cardFromPopup = new PopupWithImage(popupPhotosSelector)
 
 const handleCardClick = (cardPhotosList, cardName, cardLink) => {
   cardPhotosList.addEventListener("click", (e) => {
