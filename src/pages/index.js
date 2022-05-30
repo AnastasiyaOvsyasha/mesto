@@ -86,11 +86,11 @@ const userInfo = new UserInfo({
   userAboutSelector: profileResearcherSelector,
 });
 
-const cardFromPopup = new PopupWithImage(popupPhotosSelector)
+const cardFormPopup = new PopupWithImage(popupPhotosSelector)
 
 const handleCardClick = (cardPhotosList, cardName, cardLink) => {
   cardPhotosList.addEventListener("click", (e) => {
-    cardFromPopup.open(cardName, cardLink);
+    cardFormPopup.open(cardName, cardLink);
   });
 };
 
@@ -122,8 +122,8 @@ const addCard = (newCard) => {
   cardsList.addCardToTheBeginning(
     makeCard(
       {
-        name: newCard[`form__input_type_title`],
-        link: newCard[`form__input_type_link`],
+        name: newCard[`photo-name`],
+        link: newCard[`photo-link`],
       },
       cardTemplateSelector
     )
