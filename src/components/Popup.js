@@ -1,21 +1,24 @@
 export default class Popup {
   constructor(popupSelector) {
     this._popup = document.querySelector(popupSelector);
-    this._popupCloseIcons = this._popup.querySelector(".popup__close-icon");
+    this._closeOnClickEsc = this._closeOnClickEsc.bind(this);
+    this._closeOnClickOverlay = this._closeOnClickOverlay.bind(this);
   }
 
   open() {
-    this.setEventListeners();
     this._popup.classList.add("popup_opened");
+    document.addEventListener('keydown', this._closeOnClickEsc);
+    document.addEventListener('click', this._closeOnClickOverlay);
   }
 
   close() {
     this._popup.classList.remove("popup_opened");
-    this._removeEventListeners();
+    document.removeEventListener('keydown', this._closeOnClickEsc);
+    document.removeEventListener('click', this._closeOnClickOverlay);
   }
 
   _closeOnClickOverlay(evt) {
-    if (evt.target.classList.contains("popup")) {
+    if (evt.target.classList.contains("popup") || evt.target.classList.contains('popup__close-icon')) {
       this.close();
     }
   }
@@ -27,20 +30,6 @@ export default class Popup {
   }
 
   setEventListeners() {
-    this._closeOnClickEsc = this._closeOnClickEsc.bind(this);
-
-    this._popupCloseIcons.addEventListener("click", this.close.bind(this));
-    this._popup.addEventListener("click", (evt) =>
-      this._closeOnClickOverlay(evt)
-    );
-    document.addEventListener("keydown", this._closeOnClickEsc);
-  }
-
-  _removeEventListeners() {
-    this._popupCloseIcons.removeEventListener("click", this.close.bind(this));
-    this._popup.removeEventListener("mouseup", (evt) =>
-      this._closeOnClickOverlay(evt)
-    );
-    document.removeEventListener("keyup", this._closeOnClickEsc);
+    document.addEventListener('click', () => this._closeOnClickOverlay());
   }
 }

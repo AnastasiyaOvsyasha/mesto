@@ -7,72 +7,33 @@ import PopupWithImage from "../components/PopupWithImage";
 import PopupWithForm from "../components/PopupWithForm";
 import UserInfo from "../components/UserInfo";
 
-const validateSetting = {
-  formSelector: ".edit-form",
-  inputSelector: ".form__input",
-  inputErrorSelector: ".form__input-error",
-  inactiveSaveButtonClass: "form__save-button_inactive",
-  inputErrorClass: "form__input_type_error",
-  errorClass: "form__input-error_active",
-  submitButtonSelector: ".form__save-button",
-};
-
-const initialCardsData = [
-  {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
-
-const profileNameSelector = ".profile__name";
-const profileResearcherSelector = ".profile__researcher";
-const photosListSelector = ".photos__list";
-
-const popupEditSelector = ".popup-edit";
-const popupEditFormName = document.querySelector(".edit-form[name=form]");
-const profileEditButton = document.querySelector(".profile__edit-button");
-const formInputTypeText = popupEditFormName.querySelector(
-  ".form__input_type_text"
-);
-const formInputTypeAbout = popupEditFormName.querySelector(
-  ".form__input_type_about"
-);
+import {
+  validateSelector,
+  initialCardsData,
+  profileNameSelector,
+  profileResearcherSelector,
+  photosListSelector,
+  popupEditFormName,
+  profileEditButton,
+  formInputTypeText,
+  formInputTypeAbout,
+  popupAddForm,
+  profileAddButton,
+  cardTemplateSelector,
+  popupPhotosSelector,
+} from "../utils/constants";
 
 const popupEditNameFormValidation = new FormValidator(
-  validateSetting,
+  validateSelector,
   popupEditFormName
 );
 popupEditNameFormValidation.enableValidation();
 
-const popupAddSelector = ".popup-add";
-const popupAddForm = document.querySelector(".add-form[name=new]");
-const profileAddButton = document.querySelector(".profile__add-button");
-
-const popupAddFormValidation = new FormValidator(validateSetting, popupAddForm);
+const popupAddFormValidation = new FormValidator(
+  validateSelector,
+  popupAddForm
+);
 popupAddFormValidation.enableValidation();
-
-const cardTemplateSelector = "#template-photos";
-const popupPhotosSelector = ".popup-photos";
 
 function makeCard({ name, link }, templateSelector) {
   const newCard = new Card(name, link, templateSelector, {
@@ -111,49 +72,39 @@ function initializeProfileInfo() {
   formInputTypeAbout.value = about;
 }
 
-const infoFormEventHandler = (formInputs) => {
-  userInfo.setUserInfo({
-    newUserName: formInputs.form__input_type_text,
-    newUserAbout: formInputs.form__input_type_about,
-  });
-};
+const newCardPopupEdit = new PopupWithForm({
+  popupSelector: ".popup-edit",
+  submitForm: (data) => {
+    userInfo.setUserInfo({
+      newUserName: formInputs.form__input_type_text,
+      newUserAbout: formInputs.form__input_type_about,
+    });
+    cardsList.addItem(newCard(data));
+  },
+});
 
-const addCard = (newCard) => {
-  cardsList.addCardToTheBeginning(
+profileEditButton.addEventListener("click", () => {
+  newCardPopupEdit.open();
+  initializeProfileInfo();
+  popupEditNameFormValidation.clearFormInputError();
+});
+
+const newCardPopupAdd = new PopupWithForm({
+  popupSelector: ".popup-add",
+  submitForm: () => {
     makeCard(
       {
         name: newCard[`photo-name`],
         link: newCard[`photo-link`],
       },
       cardTemplateSelector
-    )
-  );
-};
-
-profileEditButton.addEventListener("click", () => {
-  initializeProfileInfo();
-  popupEditNameFormValidation.clearFormInputError();
-
-  const popup = new PopupWithForm(
-    {
-      submitForm: infoFormEventHandler,
-    },
-    popupEditSelector
-  );
-
-  popup.open();
+    );
+  },
 });
 
 profileAddButton.addEventListener("click", () => {
-  const popup = new PopupWithForm(
-    {
-      submitForm: addCard,
-    },
-    popupAddSelector
-  );
-
   popupAddFormValidation.clearFormInputError();
-  popup.open();
+  newCardPopupAdd.open();
 });
 
 cardsList.renderItems();
