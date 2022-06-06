@@ -30,6 +30,6 @@ export default class Popup {
   }
 
   setEventListeners() {
-    document.addEventListener('click', () => this._closeOnClickOverlay());
+    document.addEventListener('click', (evt) => {this._closeOnClickOverlay(evt);});
   }
 }

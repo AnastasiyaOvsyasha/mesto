@@ -61,6 +61,7 @@ const cardsList = new Section(
     renderer: (item) => {
       const cardElement = makeCard(item, cardTemplateSelector);
       cardsList.addItem(cardElement);
+      cardFormPopup.setEventListeners();
     },
   },
   photosListSelector
@@ -74,7 +75,7 @@ function initializeProfileInfo() {
 
 const newCardPopupEdit = new PopupWithForm({
   popupSelector: ".popup-edit",
-  submitForm: (data) => {
+  handleFormSubmit: (data) => {
     userInfo.setUserInfo({
       newUserName: formInputs.form__input_type_text,
       newUserAbout: formInputs.form__input_type_about,
@@ -91,7 +92,7 @@ profileEditButton.addEventListener("click", () => {
 
 const newCardPopupAdd = new PopupWithForm({
   popupSelector: ".popup-add",
-  submitForm: () => {
+  handleFormSubmit: () => {
     makeCard(
       {
         name: newCard[`photo-name`],
@@ -107,4 +108,7 @@ profileAddButton.addEventListener("click", () => {
   newCardPopupAdd.open();
 });
 
+newCardPopupAdd.setEventListeners();
+newCardPopupEdit.setEventListeners();
+cardFormPopup.setEventListeners();
 cardsList.renderItems();
