@@ -21,6 +21,8 @@ import {
   profileAddButton,
   cardTemplateSelector,
   popupPhotosSelector,
+  //popupEditSelector,
+  //popupAddSelector
 } from "../utils/constants";
 
 const popupEditNameFormValidation = new FormValidator(
@@ -61,52 +63,56 @@ const cardsList = new Section(
     renderer: (item) => {
       const cardElement = makeCard(item, cardTemplateSelector);
       cardsList.addItem(cardElement);
-      cardFormPopup.setEventListeners();
     },
   },
   photosListSelector
 );
 
-function initializeProfileInfo() {
-  const { name, about } = userInfo.getUserInfo();
-  formInputTypeText.value = name;
-  formInputTypeAbout.value = about;
+function addContentUserPopup(data) {
+  formInputTypeText.value = data.name;
+  formInputTypeAbout.value = data.about;
 }
 
 const newCardPopupEdit = new PopupWithForm({
   popupSelector: ".popup-edit",
-  handleFormSubmit: (data) => {
-    userInfo.setUserInfo({
-      newUserName: formInputs.form__input_type_text,
-      newUserAbout: formInputs.form__input_type_about,
-    });
-    cardsList.addItem(newCard(data));
-  },
+  handleFormSubmit: (inputValue) => {
+    userInfo.setUserInfo(inputValue);
+    newCardPopupEdit.close();
+},
+
+handleFormReset: () => {
+  popupEditNameFormValidation.clearFormInputError();
+}
 });
 
-profileEditButton.addEventListener("click", () => {
+function editButtonClickHandler() {
+  addContentUserPopup(userInfo.getUserInfo());
   newCardPopupEdit.open();
-  initializeProfileInfo();
-  popupEditNameFormValidation.clearFormInputError();
-});
+  popupEditNameFormValidation.changeButtonState();
+}
+profileEditButton.addEventListener('click', editButtonClickHandler);
 
 const newCardPopupAdd = new PopupWithForm({
   popupSelector: ".popup-add",
-  handleFormSubmit: () => {
-    makeCard(
-      {
-        name: newCard[`photo-name`],
-        link: newCard[`photo-link`],
-      },
-      cardTemplateSelector
-    );
+  handleFormReset: () => {
+    popupAddFormValidation.clearFormInputError();
   },
-});
+  handleFormSubmit: (inputValue) => {
+    newCardPopupAdd.close();
+    newCardPopupAdd.resetForm();
+    const cardElement = makeCard(inputValue, cardFormPopup, cardTemplateSelector);
+    cardsList.addItem(cardElement)
+  }});
 
-profileAddButton.addEventListener("click", () => {
+
+profileAddButton.addEventListener("click", addButtonClickHandler);
+
+
+  function addButtonClickHandler() {
   popupAddFormValidation.clearFormInputError();
+  popupAddFormValidation.changeButtonState();
   newCardPopupAdd.open();
-});
+};
 
 newCardPopupAdd.setEventListeners();
 newCardPopupEdit.setEventListeners();
