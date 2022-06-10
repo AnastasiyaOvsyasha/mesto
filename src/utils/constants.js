@@ -53,5 +53,8 @@ export const popupAddSelector = ".popup-add";
 export const popupAddForm = document.querySelector(".add-form[name=new]");
 export const profileAddButton = document.querySelector(".profile__add-button");
 
+export const popupAddElementCardNewCardName = popupAddForm.querySelector(".form__input_type_title");
+export const popupAddElementCardNewCardLink = popupAddForm.querySelector(".form__input_type_link");
+
 export const cardTemplateSelector = ".template-photos";
 export const popupPhotosSelector = ".popup-photos";

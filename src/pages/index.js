@@ -114,4 +114,7 @@ profileEditButton.addEventListener("click", () => {
   popupAdd.open();
 });
 
+popupEdit.setEventListeners();
+popupAdd.setEventListeners();
+cardFromPopup.setEventListeners();
 cardsList.renderItems();
