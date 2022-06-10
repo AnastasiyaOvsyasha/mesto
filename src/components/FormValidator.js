@@ -60,8 +60,7 @@ export default class FormValidator {
     });
     this._toggleSubmitButtonState();
   }
-
-  changeButtonState() {
+}
+  /*changeButtonState() {
     this._toggleSubmitButtonState(this._form.checkValidity());
-  }
-};
+  }};*/

@@ -21,8 +21,8 @@ import {
   profileAddButton,
   cardTemplateSelector,
   popupPhotosSelector,
-  //popupEditSelector,
-  //popupAddSelector
+  popupEditSelector,
+  popupAddSelector
 } from "../utils/constants";
 
 const popupEditNameFormValidation = new FormValidator(
@@ -43,17 +43,16 @@ function makeCard({ name, link }, templateSelector) {
   }).makeCard();
   return newCard;
 }
-
 const userInfo = new UserInfo({
   userNameSelector: profileNameSelector,
   userAboutSelector: profileResearcherSelector,
 });
 
-const cardFormPopup = new PopupWithImage(popupPhotosSelector)
+const cardFromPopup = new PopupWithImage(popupPhotosSelector)
 
 const handleCardClick = (cardPhotosList, cardName, cardLink) => {
   cardPhotosList.addEventListener("click", (e) => {
-    cardFormPopup.open(cardName, cardLink);
+    cardFromPopup.open(cardName, cardLink);
   });
 };
 
@@ -67,54 +66,47 @@ const cardsList = new Section(
   },
   photosListSelector
 );
-
-function addContentUserPopup(data) {
-  formInputTypeText.value = data.name;
-  formInputTypeAbout.value = data.about;
+function initializeProfileInfo() {
+  const { name, about } = userInfo.getUserInfo();
+  formInputTypeText.value = name;
+  formInputTypeAbout.value = about;
 }
-
-const newCardPopupEdit = new PopupWithForm({
-  popupSelector: ".popup-edit",
-  handleFormSubmit: (inputValue) => {
-    userInfo.setUserInfo(inputValue);
-    newCardPopupEdit.close();
-},
-
-handleFormReset: () => {
-  popupEditNameFormValidation.clearFormInputError();
-}
-});
-
-function editButtonClickHandler() {
-  addContentUserPopup(userInfo.getUserInfo());
-  newCardPopupEdit.open();
-  popupEditNameFormValidation.changeButtonState();
-}
-profileEditButton.addEventListener('click', editButtonClickHandler);
-
-const newCardPopupAdd = new PopupWithForm({
-  popupSelector: ".popup-add",
-  handleFormReset: () => {
-    popupAddFormValidation.clearFormInputError();
-  },
-  handleFormSubmit: (inputValue) => {
-    newCardPopupAdd.close();
-    newCardPopupAdd.resetForm();
-    const cardElement = makeCard(inputValue, cardFormPopup, cardTemplateSelector);
-    cardsList.addItem(cardElement)
-  }});
-
-
-profileAddButton.addEventListener("click", addButtonClickHandler);
-
-
-  function addButtonClickHandler() {
-  popupAddFormValidation.clearFormInputError();
-  popupAddFormValidation.changeButtonState();
-  newCardPopupAdd.open();
+const infoFormEventHandler = (formInputs) => {
+  userInfo.setUserInfo({
+    newUserName: formInputs.form__input_type_text,
+    newUserAbout: formInputs.form__input_type_about,
+  });
 };
-
-newCardPopupAdd.setEventListeners();
-newCardPopupEdit.setEventListeners();
-cardFormPopup.setEventListeners();
+const addCard = (newCard) => {
+  cardsList.addCardToTheBeginning(
+    makeCard(
+      {
+        name: newCard[`photo-name`],
+        link: newCard[`photo-link`],
+      },
+      cardTemplateSelector
+    )
+  );
+};
+profileEditButton.addEventListener("click", () => {
+  initializeProfileInfo();
+  popupEditNameFormValidation.clearFormInputError();
+  const popup = new PopupWithForm(
+    {
+      submitForm: infoFormEventHandler,
+    },
+    popupEditSelector
+  );
+  popup.open();
+});
+profileAddButton.addEventListener("click", () => {
+  const popup = new PopupWithForm(
+    {
+      submitForm: addCard,
+    },
+    popupAddSelector
+  );
+  popupAddFormValidation.clearFormInputError();
+  popup.open();
+});
 cardsList.renderItems();
