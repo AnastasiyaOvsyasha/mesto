@@ -25,7 +25,7 @@ export default class FormValidator {
   }
 
   _setEventListeners() {
-    this._handleFormSubmit = this._form.querySelector(this._submitButtonSelector);
+    this._submitButton = this._form.querySelector(this._submitButtonSelector);
     this._form.addEventListener("input", (event) => {
       this._hasFormInput(event.target);
       this._toggleSubmitButtonState();
@@ -47,8 +47,8 @@ export default class FormValidator {
   }
 
   _toggleSubmitButtonState() {
-    this._handleFormSubmit.disabled = !this._form.checkValidity();
-    this._handleFormSubmit.classList.toggle(
+    this._submitButton.disabled = !this._form.checkValidity();
+    this._submitButton.classList.toggle(
       this._inactiveSaveButtonClass,
       !this._form.checkValidity()
     );
@@ -61,6 +61,3 @@ export default class FormValidator {
     this._toggleSubmitButtonState();
   }
 }
-  /*changeButtonState() {
-    this._toggleSubmitButtonState(this._form.checkValidity());
-  }};*/

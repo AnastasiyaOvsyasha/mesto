@@ -40,7 +40,7 @@ export const profileResearcherSelector = ".profile__researcher";
 export const photosListSelector = ".photos__list";
 
 export const popupEditSelector = ".popup-edit";
-export const popupEditFormName = document.querySelector(".edit-form");
+export const popupEditFormName = document.querySelector(".edit-form[name=form]");
 export const profileEditButton = document.querySelector(".profile__edit-button");
 export const formInputTypeText = popupEditFormName.querySelector(
   ".form__input_type_text"
@@ -50,7 +50,7 @@ export const formInputTypeAbout = popupEditFormName.querySelector(
 );
 
 export const popupAddSelector = ".popup-add";
-export const popupAddForm = document.querySelector(".add-form");
+export const popupAddForm = document.querySelector(".add-form[name=new]");
 export const profileAddButton = document.querySelector(".profile__add-button");
 
 export const cardTemplateSelector = ".template-photos";

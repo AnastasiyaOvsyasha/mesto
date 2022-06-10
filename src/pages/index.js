@@ -43,6 +43,7 @@ function makeCard({ name, link }, templateSelector) {
   }).makeCard();
   return newCard;
 }
+
 const userInfo = new UserInfo({
   userNameSelector: profileNameSelector,
   userAboutSelector: profileResearcherSelector,
@@ -91,22 +92,26 @@ const addCard = (newCard) => {
 profileEditButton.addEventListener("click", () => {
   initializeProfileInfo();
   popupEditNameFormValidation.clearFormInputError();
-  const popup = new PopupWithForm(
+  popupEdit.open();
+});
+
+  const popupEdit = new PopupWithForm(
     {
       submitForm: infoFormEventHandler,
     },
     popupEditSelector
   );
-  popup.open();
-});
-profileAddButton.addEventListener("click", () => {
-  const popup = new PopupWithForm(
+
+  const popupAdd = new PopupWithForm(
     {
       submitForm: addCard,
     },
     popupAddSelector
   );
+
+  profileAddButton.addEventListener("click", () => {
   popupAddFormValidation.clearFormInputError();
-  popup.open();
+  popupAdd.open();
 });
+
 cardsList.renderItems();
