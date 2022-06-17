@@ -81,8 +81,8 @@ export default class Api {
     }).then( this._checkAnswer)
   }
 
-  likeCard(cardId) {
-    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+  likeCard(_id) {
+    return fetch(`${this._baseUrl}/cards/${_id}/likes`, {
       method: "PUT",
       headers: {
         authorization: this._token,
@@ -90,8 +90,8 @@ export default class Api {
     }).then( this._checkAnswer)
   }
 
-  dislikeCard(cardId) {
-    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+  dislikeCard(_id) {
+    return fetch(`${this._baseUrl}/cards/${_id}/likes`, {
       method: "PUT",
       headers: {
         authorization: this._token,

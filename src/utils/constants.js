@@ -13,9 +13,7 @@ export const profileResearcherSelector = ".profile__researcher";
 export const photosListSelector = ".photos__list";
 
 export const popupEditSelector = ".popup-edit";
-export const popupEditForm = document.querySelector(
-  ".edit-form"
-);
+export const popupEditForm = document.querySelector(".edit-form");
 export const profileEditButton = document.querySelector(
   ".profile__edit-button"
 );
@@ -40,14 +38,11 @@ export const popupAddElementCardNewCardLink = popupAddForm.querySelector(
 export const cardTemplateSelector = "#template-photos";
 export const popupPhotosSelector = ".popup-photos";
 
-//confirm
-export const popupConfirmSelector = ".popup-confirm"; //confirmationPopupSelector
-export const profileAvatarEditButton = document.querySelector(".profile__avatar-edit-button");
-//profileAvatarChangeBtn
+export const popupConfirmSelector = ".popup-confirm";
+export const profileAvatarEditButton = document.querySelector(
+  ".profile__avatar-edit-button"
+);
 
+export const updateAvatarPopupSelector = ".popup_update_user-avatar";
 
-//avatar
-//измени название внизу
-export const updateAvatarPopupSelector = ".popup_update_user-avatar" //updateAvatarPopupSelector
-//popupUpdateAvatarForm
 export const popupConfirmForm = document.querySelector(".form-confirm");
