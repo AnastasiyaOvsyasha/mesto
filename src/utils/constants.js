@@ -28,12 +28,6 @@ export const popupAddSelector = ".popup-add";
 export const popupAddForm = document.querySelector(".add-form");
 export const profileAddButton = document.querySelector(".profile__add-button");
 export const profileAvatarSelector = ".profile__avatar";
-export const popupAddElementCardNewCardName = popupAddForm.querySelector(
-  ".form__input_type_title"
-);
-export const popupAddElementCardNewCardLink = popupAddForm.querySelector(
-  ".form__input_type_link"
-);
 
 export const cardTemplateSelector = "#template-photos";
 export const popupPhotosSelector = ".popup-photos";
@@ -45,4 +39,4 @@ export const profileAvatarEditButton = document.querySelector(
 
 export const updateAvatarPopupSelector = ".popup_update_user-avatar";
 
-export const popupConfirmForm = document.querySelector(".form-confirm");
+export const popupConfirmForm = document.querySelector(".form-confirm", ".update-avatar-form");

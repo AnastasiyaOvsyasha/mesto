@@ -106,12 +106,12 @@ const likeCardBtnClick = (card) => {
   if (!card.isLiked(userInfo.userId)) {
     api
       .likeCard(card.id)
-      .then((res) => card.likesOnCard(res.likes))
+      .then((res) => card.setCardLikes(res.likes))
       .catch((err) => console.log(err));
   } else {
     api
       .dislikeCard(card.id)
-      .then((res) => card.likesOnCard(res.likes))
+      .then((res) => card.setCardLikes(res.likes))
       .catch((err) => console.log(err));
   }
 };
@@ -146,6 +146,7 @@ const initializeProfileInfo = () => {
 };
 
 const infoFormEventHandler = (formInputs) => {
+  popupEdit.sendTextSubmitOnButton("Сохранение...")
   api
     .setDataUser({
       newUserName: formInputs.form__input_type_text,
@@ -162,12 +163,13 @@ const infoFormEventHandler = (formInputs) => {
 };
 
 const addNewCard = (newCard) => {
+  popupAdd.sendTextSubmitOnButton("Сохранение...");
   api
     .addCard({
       cardName: newCard[`form__input_type_title`],
       cardLink: newCard[`form__input_type_link`],
     })
-    .then((newCard) => {
+    .then(newCard => {
       console.log(newCard);
       cardsList.addCardToTheBeginning(
         makeCard(
@@ -180,15 +182,16 @@ const addNewCard = (newCard) => {
     })
     .then(() => popupAdd.close())
     .finally(() => popupAdd.sendTextSubmitOnButton("Создать"))
-    .catch((err) => console.log(err));
+    .catch(err => console.log(err));
 };
 
-const updateAvatar = (formInputs) => {
+const updateAvatar = (formInput) => {
+  popupAvatar.sendTextSubmitOnButton("Сохранение...");
   api
-    .updateUserAvatar(formInputs["form__input_update_avatar"])
+    .updateUserAvatar(formInput["form__input_update_avatar"])
     .then(() => {
       userInfo.setUserInfo({
-        avatar: formInputs["form__input_update_avatar"],
+        avatar: formInput["form__input_update_avatar"],
       });
       popupAvatar.close();
     })
@@ -233,9 +236,6 @@ profileAvatarEditButton.addEventListener("click", () => {
   popupAvatar.open();
 });
 
-popupEdit.sendTextSubmitOnButton("Сохранение...");
-popupAdd.sendTextSubmitOnButton("Сохранение...");
-popupAvatar.sendTextSubmitOnButton("Сохранение...");
 popupConfirmation.setEventListeners();
 popupAvatar.setEventListeners();
 popupEdit.setEventListeners();
