@@ -19,7 +19,7 @@ export default class Api {
       headers: {
         authorization: this._token,
       },
-    }).then( this._checkAnswer)
+    }).then(this._checkAnswer);
   }
 
   getInitialCardsData() {
@@ -28,7 +28,7 @@ export default class Api {
       headers: {
         authorization: this._token,
       },
-    }).then( this._checkAnswer)
+    }).then(this._checkAnswer);
   }
 
   setDataUser({ newUserName, newUserAbout }) {
@@ -42,7 +42,7 @@ export default class Api {
         name: newUserName,
         about: newUserAbout,
       }),
-    }).then( this._checkAnswer)
+    }).then(this._checkAnswer);
   }
 
   addCard({ cardName, cardLink }) {
@@ -56,7 +56,7 @@ export default class Api {
         name: cardName,
         link: cardLink,
       }),
-    }).then( this._checkAnswer)
+    }).then(this._checkAnswer);
   }
 
   updateUserAvatar(avatarSrc) {
@@ -69,7 +69,7 @@ export default class Api {
       body: JSON.stringify({
         avatar: avatarSrc,
       }),
-    }).then( this._checkAnswer)
+    }).then(this._checkAnswer);
   }
 
   deleteCard(_id) {
@@ -78,7 +78,7 @@ export default class Api {
       headers: {
         authorization: this._token,
       },
-    }).then( this._checkAnswer)
+    }).then(this._checkAnswer);
   }
 
   likeCard(_id) {
@@ -87,15 +87,15 @@ export default class Api {
       headers: {
         authorization: this._token,
       },
-    }).then( this._checkAnswer)
+    }).then(this._checkAnswer);
   }
 
   dislikeCard(_id) {
     return fetch(`${this._baseUrl}/cards/${_id}/likes`, {
-      method: "PUT",
+      method: "DELETE",
       headers: {
         authorization: this._token,
       },
-    }).then( this._checkAnswer)
+    }).then(this._checkAnswer);
   }
 }

@@ -1,6 +1,6 @@
 import Popup from "./Popup.js";
 
-export default class PopupWithReceive extends Popup {
+export default class PopupWithConfirmation extends Popup {
   constructor({ receivedFunction }, popupSelector) {
     super(popupSelector);
     this._receivedFunction = receivedFunction;
@@ -24,9 +24,5 @@ export default class PopupWithReceive extends Popup {
   open(card) {
     super.open();
     this._card = card;
-  }
-
-  sendTextSubmitOnButton(value) {
-    this._popupSubmitButton.value = value
   }
 }

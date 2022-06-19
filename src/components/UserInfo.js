@@ -16,10 +16,10 @@ export default class UserInfo {
   }
 
   setUserInfo(data) {
-      this._userNameContainer.textContent = data.name;
-      this._userAboutContainer.textContent = data.about;
-      this._avatar.src = data.avatar;
-      this._avatar.alt = this._userNameContainer.textContent;
-      this.userId = data._id;
+    this._userNameContainer.textContent = data.name;
+    this._userAboutContainer.textContent = data.about;
+    this._avatar.src = data.avatar;
+    this._avatar.alt = this._userNameContainer.textContent;
+    this.userId = data._id;
   }
 }

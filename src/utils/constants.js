@@ -39,4 +39,7 @@ export const profileAvatarEditButton = document.querySelector(
 
 export const updateAvatarPopupSelector = ".popup_update_user-avatar";
 
-export const popupConfirmForm = document.querySelector(".form-confirm", ".update-avatar-form");
+export const popupConfirmForm = document.querySelector(
+  ".form-confirm",
+  ".update-avatar-form"
+);

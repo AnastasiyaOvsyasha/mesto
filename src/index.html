@@ -16,8 +16,7 @@
   <main class="container">
     <section class="profile">
       <img class="profile__avatar" src="<%=require('./images/Russo.jpg')%>" alt="Жак-Ив Кусто в красной шапке">
-      <button class="profile__avatar-edit-button" aria-label="форма с обновлением аватара"></button>
-      </div>
+      <button class="profile__avatar-edit-button" aria-label="кнопка для обновления аватара"></button>
       <div class="profile__info">
         <h1 class="profile__name">Жак-Ив Кусто</h1>
         <button class="profile__edit-button" aria-label="редактировать профиль" type="button"></button>
@@ -61,8 +60,9 @@
           <span class="form__input-error" data-input="add-photo-name-input-error" id="photo-name-error" role="status"
             aria-live="polite"></span>
           <input class="form__input form__input_type_link" data-input="add-photo-link-input" type="url"
-            name="form__input_type_link" id="photo-link" placeholder="Ссылка на картинку" required><span class="form__input-error"
-            data-input="add-photo-link-input-error" id="photo-link-error" role="status" aria-live="polite"></span>
+            name="form__input_type_link" id="photo-link" placeholder="Ссылка на картинку" required><span
+            class="form__input-error" data-input="add-photo-link-input-error" id="photo-link-error" role="status"
+            aria-live="polite"></span>
           <button type="submit" value="Создать" class="form__save-button">Создать</button>
         </fieldset>
         <button class="popup__close-icon popup-add__close-icon" aria-label="закрыть форму профиля"
@@ -84,8 +84,8 @@
       <form class="form update-avatar-form" name="update-avatar" novalidate>
         <h3 class="form__title form__title_update_avatar">Обновить аватар</h3>
         <fieldset class="form__fieldset">
-          <input class="form__input form__input_update_avatar" name="form__input_update_avatar" type="url" id="avatar-link"
-            aria-label="ссылка" placeholder="Ссылка на обновление аватара профиля" required>
+          <input class="form__input form__input_update_avatar" name="form__input_update_avatar" type="url"
+            id="avatar-link" aria-label="ссылка" placeholder="Ссылка на обновление аватара профиля" required>
           <span class='form__input-error' id='avatar-update-link-error'></span>
           <button class="form__save-button" type="submit" value="Сохранить">Сохранить</button>
         </fieldset>
@@ -99,7 +99,7 @@
       <form class="form form-confirm" name="delete-card" novalidate>
         <h3 class="form__title form__title_confirm_form">Вы уверены?</h3>
         <fieldset class="form__fieldset">
-          <button class="form__save-button" type="submit" value="Да">Да</button>
+          <button class="form__save-button" type="submit">Да</button>
         </fieldset>
         <button type="button" class="popup__close-icon popup-confirm__close-icon" aria-label="закрыть"></button>
       </form>
@@ -111,8 +111,10 @@
       <img class="photos__image">
       <div class="photos__box-info">
         <h2 class="photos__title"></h2>
-        <button class="photos__like-button" aria-label="поставить лайк фото" type="button"></button>
-        <span class="photos__like-counter">0</span>
+        <div>
+          <button class="photos__like-button" aria-label="поставить лайк фото" type="button"></button>
+          <p class="photos__like-counter">0</p>
+        </div>
       </div>
     </li>
   </template>
