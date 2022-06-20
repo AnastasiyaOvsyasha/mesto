@@ -1,25 +1,39 @@
 export default class UserInfo {
-  constructor({ userNameSelector, userAboutSelector, avatarSelector, userId }) {
+  constructor({
+    userNameSelector,
+    userResearcherSelector,
+    userAvatarSelector,
+    userId,
+  }) {
     this.userId = userId;
+    this._userResearcherContainer = document.querySelector(userResearcherSelector);
     this._userNameContainer = document.querySelector(userNameSelector);
-    this._userAboutContainer = document.querySelector(userAboutSelector);
-    this._avatar = document.querySelector(avatarSelector);
+    this._userAvatar = document.querySelector(userAvatarSelector);
   }
 
   getUserInfo() {
     return {
       name: this._userNameContainer.textContent,
-      about: this._userAboutContainer.textContent,
-      avatar: this._avatar.src,
+      about: this._userResearcherContainer.textContent,
+      avatar: this._userAvatar.src,
       _id: this.userId,
     };
   }
 
-  setUserInfo(data) {
-    this._userNameContainer.textContent = data.name;
-    this._userAboutContainer.textContent = data.about;
-    this._avatar.src = data.avatar;
-    this._avatar.alt = this._userNameContainer.textContent;
-    this.userId = data._id;
+  setUserInfo({ name, about, avatar, _id }) {
+    if (name) {
+      this._name = name;
+      this._userNameContainer.textContent = name;
+    }
+    if (about) {
+      this._userResearcherContainer.textContent = about;
+    }
+    if (avatar) {
+      this._userAvatar.src = avatar;
+      this._userAvatar.alt = this._userNameContainer.textContent;
+    }
+    if (_id) {
+      this.userId = _id;
+    }
   }
 }

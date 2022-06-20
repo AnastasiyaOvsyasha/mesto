@@ -42,8 +42,8 @@ export default class FormValidator {
     const error = this._form.querySelector(
       `[data-input=${input.dataset.input}-error]`
     );
-    error.classList.remove(this._errorClass);
     input.classList.remove(this._inputErrorClass);
+    error.classList.remove(this._errorClass);
   }
 
   _toggleSubmitButtonState() {

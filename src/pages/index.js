@@ -91,15 +91,15 @@ const makeCard = (card, templateSelector) => {
 
 const userInfo = new UserInfo({
   userNameSelector: profileNameSelector,
-  userAboutSelector: profileResearcherSelector,
-  avatarSelector: profileAvatarSelector,
+  userResearcherSelector: profileResearcherSelector,
+  userAvatarSelector: profileAvatarSelector,
 });
 
-const cardFromPopup = new PopupWithImage(popupPhotosSelector);
+const popupAddCard = new PopupWithImage(popupPhotosSelector);
 
 const handleCardClick = (cardPhotosList, cardName, cardLink) => {
   cardPhotosList.addEventListener("click", () => {
-    cardFromPopup.open(cardName, cardLink);
+    popupAddCard.open(cardName, cardLink);
   });
 };
 
@@ -166,8 +166,8 @@ const infoFormEventHandler = (formInputs) => {
       });
     })
     .then(() => popupEdit.close())
-    .finally(() => popupEdit.sendTextSubmitOnButton("Сохранить"))
-    .catch((err) => console.log(err));
+    .catch((err) => console.log(err))
+    .finally(() => popupEdit.sendTextSubmitOnButton("Сохранить"));
 };
 
 const addNewCard = (newCard) => {
@@ -189,8 +189,8 @@ const addNewCard = (newCard) => {
       );
     })
     .then(() => popupAdd.close())
+    .catch((err) => console.log(err))
     .finally(() => popupAdd.sendTextSubmitOnButton("Создать"))
-    .catch((err) => console.log(err));
 };
 
 const updateAvatar = (formInput) => {
@@ -203,8 +203,8 @@ const updateAvatar = (formInput) => {
       });
       popupAvatar.close();
     })
-    .finally(() => popupAvatar.sendTextSubmitOnButton("Создать"))
-    .catch((err) => console.log(err));
+    .catch((err) => console.log(err))
+    .finally(() => popupAvatar.sendTextSubmitOnButton("Создать"));
 };
 
 profileEditButton.addEventListener("click", () => {
@@ -248,4 +248,4 @@ popupConfirmation.setEventListeners();
 popupAvatar.setEventListeners();
 popupEdit.setEventListeners();
 popupAdd.setEventListeners();
-cardFromPopup.setEventListeners();
+popupAddCard.setEventListeners();

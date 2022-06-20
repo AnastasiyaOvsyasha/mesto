@@ -1,5 +1,5 @@
 export const validateSelector = {
-  formSelector: ".edit-form",
+  formSelector: ".form",
   inputSelector: ".form__input",
   inputErrorSelector: ".form__input-error",
   inactiveSaveButtonClass: "form__save-button_inactive",
