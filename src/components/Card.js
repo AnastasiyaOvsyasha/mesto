@@ -16,20 +16,20 @@ export default class Card {
     this._clickDislike = clickDislike;
   }
 
-  _getTemplateElement = () => {
-    const cardTemplate = document
+  _getTemplateElement() {
+    this._cardTemplate = document
       .querySelector(this._templateSelector)
       .content.querySelector(".photos__card")
       .cloneNode(true);
-    return cardTemplate;
+    return this._cardTemplate;
   };
 
-  deleteCard = () => {
+  deleteCard() {
     this._card.remove();
     this._card = null;
   };
 
-  _likeCard = () => {
+  _likeCard() {
     if (this._isLiked) {
       this._clickDislike(this);
     } else {
